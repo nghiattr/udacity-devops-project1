@@ -8,9 +8,14 @@ variable "resource_group_location" {
   description = "Location of the resource group."
 }
 
-variable "count" {
-  default     = "2"
-  description = "Count"
+# variable "count" {
+#   default     = "2"
+#   description = "Count"
+# }
+
+variable "custom_image_name" {
+  default     = "myPackerImage3"
+  description = "Custom image name"
 }
 
 variable "admin_username" {
