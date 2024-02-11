@@ -109,7 +109,7 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
-  vm_size               = "Standard_B4ms"
+  vm_size               = "Standard_B2ms"
 
   storage_image_reference {
     id = data.azurerm_image.custom.id
@@ -125,7 +125,7 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   }
 
   storage_os_disk {
-    name                 = "myOsDisk-assign2"
+    name                 = "myOsDisk-assign4"
     caching              = "ReadWrite"
     create_option        = "FromImage"
     managed_disk_type    = "Standard_LRS"
