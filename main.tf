@@ -15,7 +15,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
   resource_group_name = var.resource_group_name
   
   tags = {
-    source = "NghiaUdacitylab"
+    source = var.custom_tags
   }
 }
 
@@ -35,8 +35,31 @@ resource "azurerm_public_ip" "myterraformpublicip" {
   allocation_method   = "Dynamic"
     
   tags = {
-    source = "NghiaUdacitylab"
+    source = var.custom_tags
   }
+}
+
+#Create a Load Balancer
+resource "azurerm_lb" "lb" {
+  name                = "loadBalancer"
+  location            = var.resource_group_location
+  resource_group_name = var.resource_group_name
+
+  frontend_ip_configuration {
+    name                 = "publicIPAddress"
+    public_ip_address_id = azurerm_public_ip.myterraformpublicip.id
+  }
+
+  tags = {
+    source = var.custom_tags
+  }
+}
+
+
+#Create a LoadBalancer Backend Address Pool
+resource "azurerm_lb_backend_address_pool" "lbbap" {
+  loadbalancer_id = azurerm_lb.lb.id
+  name            = "BackEndAddressPool"
 }
 
 # Create Network Security Group and rule
@@ -68,33 +91,38 @@ resource "azurerm_network_security_group" "myterraformnsg" {
     destination_address_prefix = "*"
   }
 
-    
   tags = {
-    source = "NghiaUdacitylab"
+    source = var.custom_tags
   }
 }
 
-# Create network interface
-resource "azurerm_network_interface" "myterraformnic" {
-  name                = "myNIC-assign2"
-  location            = var.resource_group_location
-  resource_group_name = var.resource_group_name
+# # Create network interface
+# resource "azurerm_network_interface" "myterraformnic" {
+#   name                = "myNIC-assign2"
+#   location            = var.resource_group_location
+#   resource_group_name = var.resource_group_name
 
-  ip_configuration {
-    name                          = "myNicConfiguration-assign2"
-    subnet_id                     = azurerm_subnet.myterraformsubnet.id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.myterraformpublicip.id
-  }
+#   ip_configuration {
+#     name                          = "myNicConfiguration-assign2"
+#     subnet_id                     = azurerm_subnet.myterraformsubnet.id
+#     private_ip_address_allocation = "Dynamic"
+#     public_ip_address_id          = azurerm_public_ip.myterraformpublicip.id
+#   }
     
-  tags = {
-    source = "NghiaUdacitylab"
-  }
-}
+#   tags = {
+#     source = var.custom_tags
+#   }
+# }
 
 # Connect the security group to the network interface
-resource "azurerm_network_interface_security_group_association" "example" {
-  network_interface_id      = azurerm_network_interface.myterraformnic.id
+# resource "azurerm_network_interface_security_group_association" "example" {
+#   network_interface_id      = azurerm_network_interface.myterraformnic.id
+#   network_security_group_id = azurerm_network_security_group.myterraformnsg.id
+# }
+
+# Connect the  subnet to the network interface
+resource "azurerm_subnet_network_security_group_association" "example" {
+  subnet_id                 = azurerm_subnet.myterraformsubnet.id
   network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 }
 
@@ -109,7 +137,7 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   count                 = var.instance_count
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.myterraformnic.id]
+  network_interface_ids = []
   vm_size               = "Standard_B2ms"
 
   storage_image_reference {
@@ -133,7 +161,13 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   }
 
   tags = {
-    source = "NghiaUdacitylab"
+    source = var.custom_tags
   }
 }
 
+resource "azurerm_network_interface_backend_address_pool_association" "example" {
+  count                    = var.instance_count
+  network_interface_id     = azurerm_network_interface.myterraformnic[count.index].id
+  ip_configuration_name    = "myNicConfiguration-assign2"
+  backend_address_pool_id  = azurerm_lb_backend_address_pool.lbbap.id
+}

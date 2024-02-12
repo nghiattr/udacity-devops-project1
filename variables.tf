@@ -14,6 +14,11 @@ variable "instance_count" {
   default     = 2
 }
 
+variable "custom_tags" {
+  description = "custom tags name"
+  default     = "NghiaUdacitylab"
+}
+
 variable "custom_image_name" {
   default     = "myPackerImage"
   description = "Custom image name"
