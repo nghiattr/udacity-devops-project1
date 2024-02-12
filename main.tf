@@ -106,6 +106,7 @@ data "azurerm_image" "custom" {
 # Create virtual machine Linux for udacity-vm-lab
 resource "azurerm_virtual_machine" "udacity-vm-lab" {
   name                  = "udacity-vm-lab"
+  count                 = var.instance_count
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]

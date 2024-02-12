@@ -3,6 +3,5 @@
 # }
 
 output "name-udacity-vm-lab" {
-  value = azurerm_virtual_machine.udacity-vm-lab.name
+  value = azurerm_virtual_machine.udacity-vm-lab[*].name
 }
-

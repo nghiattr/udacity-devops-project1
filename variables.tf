@@ -8,13 +8,14 @@ variable "resource_group_location" {
   description = "Location of the resource group."
 }
 
-# variable "count" {
-#   default     = "2"
-#   description = "Count"
-# }
+variable "instance_count" {
+  description = "The number of virtual machines to deploy"
+  type        = number
+  default     = 2
+}
 
 variable "custom_image_name" {
-  default     = "myPackerImage3"
+  default     = "myPackerImage"
   description = "Custom image name"
 }
 

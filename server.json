@@ -7,17 +7,21 @@
     "builders": [
         {
             "type": "azure-arm",
-            "client_id": "0aca1828-f6f8-4503-be41-db6b4e00ef18",
-            "client_secret": "-p28Q~NpAjezoa.Kvu6rUu2mMVZJaeQKa7pM3aTU",
-            "subscription_id": "456cc604-544c-45f8-99d0-c1b73aeec440",
+            "client_id": "60222340-fe29-4aa9-a174-0f5f436c9607",
+            "client_secret": "t7K8Q~EVQbYstHAOwCjpOCUcv4QE1oxbVTX3Tc0-",
+            "subscription_id": "44ada2e4-89f9-41cc-8efc-3cf76cd05c0c",
             "os_type": "Linux",
             "image_publisher": "Canonical",
             "image_offer": "UbuntuServer",
             "image_sku": "18.04-LTS",
             "managed_image_resource_group_name": "Azuredevops",
-            "managed_image_name": "myPackerImage3",
+            "managed_image_name": "myPackerImage2",
             "location": "East US",
-            "vm_size": "Standard_B1s"
+            "vm_size": "Standard_B1s",
+            "azure_tags": {
+                "source": "NghiaUdacitylab",
+                "created_by": "Packerrr"
+            }
         }
     ],
     "provisioners": [
@@ -28,7 +32,7 @@
             ],
             "inline_shebang": "/bin/sh -x",
             "type": "shell",
-            "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+            "execute_command": "chmod 777 {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
         }
     ]
 }
