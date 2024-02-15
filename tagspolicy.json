@@ -1,12 +1,17 @@
-{
-    "if": {
-      "not": {
-        "field": "tags",
-        "exists": "true"
+
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "tags",
+          "exists": "true"
+        },
+        "value": "[less(length(field('tags')), 1)]",
+        "equals": "true"
+      },
+      "then": {
+        "effect": "deny"
       }
     },
-    "then": {
-      "effect": "deny"
-    }
-  }
-  
+    "parameters": {}
+}

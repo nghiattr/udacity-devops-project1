@@ -1,0 +1,531 @@
+[0m[1mdata.azurerm_image.custom: Reading...[0m[0m
+[0m[1mazurerm_virtual_network.myterraformnetwork: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2][0m
+[0m[1mazurerm_public_ip.myterraformpublicip3: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3][0m
+[0m[1mazurerm_public_ip.myterraformpublicip: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign2][0m
+[0m[1mazurerm_network_security_group.myterraformnsg: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/myNSG-assign2][0m
+[0m[1mazurerm_subnet.myterraformsubnet: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2][0m
+[0m[1mdata.azurerm_image.custom: Read complete after 1s [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/myPackerImage][0m
+[0m[1mazurerm_lb.lb: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer][0m
+[0m[1mazurerm_subnet_network_security_group_association.example: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2][0m
+[0m[1mazurerm_network_interface.myterraformnic: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2][0m
+[0m[1mazurerm_network_interface.myterraformnic3: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign3][0m
+[0m[1mazurerm_lb_backend_address_pool.lbbap: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer/backendAddressPools/BackEndAddressPool][0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # azurerm_lb.lb[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_lb" "lb" {
+      [31m-[0m[0m id                   = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer" [90m-> null[0m[0m
+      [31m-[0m[0m location             = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                 = "loadBalancer" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip_addresses = [] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name  = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m sku                  = "Basic" [90m-> null[0m[0m
+      [31m-[0m[0m sku_tier             = "Regional" [90m-> null[0m[0m
+      [31m-[0m[0m tags                 = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+
+      [31m-[0m[0m frontend_ip_configuration {
+          [31m-[0m[0m id                            = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer/frontendIPConfigurations/publicIPAddress" [90m-> null[0m[0m
+          [31m-[0m[0m inbound_nat_rules             = [] [90m-> null[0m[0m
+          [31m-[0m[0m load_balancer_rules           = [] [90m-> null[0m[0m
+          [31m-[0m[0m name                          = "publicIPAddress" [90m-> null[0m[0m
+          [31m-[0m[0m outbound_rules                = [] [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address_allocation = "Dynamic" [90m-> null[0m[0m
+          [31m-[0m[0m public_ip_address_id          = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign2" [90m-> null[0m[0m
+          [31m-[0m[0m zones                         = [] [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_lb_backend_address_pool.lbbap[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_lb_backend_address_pool" "lbbap" {
+      [31m-[0m[0m backend_ip_configurations = [] [90m-> null[0m[0m
+      [31m-[0m[0m id                        = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer/backendAddressPools/BackEndAddressPool" [90m-> null[0m[0m
+      [31m-[0m[0m inbound_nat_rules         = [] [90m-> null[0m[0m
+      [31m-[0m[0m load_balancing_rules      = [] [90m-> null[0m[0m
+      [31m-[0m[0m loadbalancer_id           = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer" [90m-> null[0m[0m
+      [31m-[0m[0m name                      = "BackEndAddressPool" [90m-> null[0m[0m
+      [31m-[0m[0m outbound_rules            = [] [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_network_interface.myterraformnic[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_network_interface" "myterraformnic" {
+      [31m-[0m[0m applied_dns_servers           = [] [90m-> null[0m[0m
+      [31m-[0m[0m dns_servers                   = [] [90m-> null[0m[0m
+      [31m-[0m[0m enable_accelerated_networking = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_ip_forwarding          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                            = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m internal_domain_name_suffix   = "cxstfoprfr3e3dhqibufgohqlg.bx.internal.cloudapp.net" [90m-> null[0m[0m
+      [31m-[0m[0m location                      = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m mac_address                   = "7C-1E-52-09-F8-A9" [90m-> null[0m[0m
+      [31m-[0m[0m name                          = "myNIC-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip_address            = "10.0.1.4" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip_addresses          = [
+          [31m-[0m[0m "10.0.1.4",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name           = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m tags                          = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m virtual_machine_id            = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab" [90m-> null[0m[0m
+
+      [31m-[0m[0m ip_configuration {
+          [31m-[0m[0m name                          = "myNicConfiguration-assign2" [90m-> null[0m[0m
+          [31m-[0m[0m primary                       = true [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address            = "10.0.1.4" [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address_allocation = "Dynamic" [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address_version    = "IPv4" [90m-> null[0m[0m
+          [31m-[0m[0m public_ip_address_id          = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3" [90m-> null[0m[0m
+          [31m-[0m[0m subnet_id                     = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_network_interface.myterraformnic3[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_network_interface" "myterraformnic3" {
+      [31m-[0m[0m applied_dns_servers           = [] [90m-> null[0m[0m
+      [31m-[0m[0m dns_servers                   = [] [90m-> null[0m[0m
+      [31m-[0m[0m enable_accelerated_networking = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_ip_forwarding          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                            = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign3" [90m-> null[0m[0m
+      [31m-[0m[0m location                      = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m mac_address                   = "7C-1E-52-00-BD-0F" [90m-> null[0m[0m
+      [31m-[0m[0m name                          = "myNIC-assign3" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip_address            = "10.0.1.5" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip_addresses          = [
+          [31m-[0m[0m "10.0.1.5",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name           = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m tags                          = {} [90m-> null[0m[0m
+
+      [31m-[0m[0m ip_configuration {
+          [31m-[0m[0m name                          = "myNicConfiguration-assign3" [90m-> null[0m[0m
+          [31m-[0m[0m primary                       = true [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address            = "10.0.1.5" [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address_allocation = "Dynamic" [90m-> null[0m[0m
+          [31m-[0m[0m private_ip_address_version    = "IPv4" [90m-> null[0m[0m
+          [31m-[0m[0m subnet_id                     = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_network_security_group.myterraformnsg[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_network_security_group" "myterraformnsg" {
+      [31m-[0m[0m id                  = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/myNSG-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m location            = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                = "myNSG-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m security_rule       = [
+          [31m-[0m[0m {
+              [31m-[0m[0m access                                     = "Deny"
+              [31m-[0m[0m description                                = ""
+              [31m-[0m[0m destination_address_prefix                 = "*"
+              [31m-[0m[0m destination_address_prefixes               = []
+              [31m-[0m[0m destination_application_security_group_ids = []
+              [31m-[0m[0m destination_port_range                     = "*"
+              [31m-[0m[0m destination_port_ranges                    = []
+              [31m-[0m[0m direction                                  = "Inbound"
+              [31m-[0m[0m name                                       = "DenyInternetInbound"
+              [31m-[0m[0m priority                                   = 110
+              [31m-[0m[0m protocol                                   = "*"
+              [31m-[0m[0m source_address_prefix                      = "Internet"
+              [31m-[0m[0m source_address_prefixes                    = []
+              [31m-[0m[0m source_application_security_group_ids      = []
+              [31m-[0m[0m source_port_range                          = "*"
+              [31m-[0m[0m source_port_ranges                         = []
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags                = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_public_ip.myterraformpublicip[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_public_ip" "myterraformpublicip" {
+      [31m-[0m[0m allocation_method       = "Dynamic" [90m-> null[0m[0m
+      [31m-[0m[0m ddos_protection_mode    = "VirtualNetworkInherited" [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m idle_timeout_in_minutes = 4 [90m-> null[0m[0m
+      [31m-[0m[0m ip_tags                 = {} [90m-> null[0m[0m
+      [31m-[0m[0m ip_version              = "IPv4" [90m-> null[0m[0m
+      [31m-[0m[0m location                = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                    = "myPublicIP-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name     = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m sku                     = "Basic" [90m-> null[0m[0m
+      [31m-[0m[0m sku_tier                = "Regional" [90m-> null[0m[0m
+      [31m-[0m[0m tags                    = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m zones                   = [] [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_public_ip.myterraformpublicip3[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_public_ip" "myterraformpublicip3" {
+      [31m-[0m[0m allocation_method       = "Dynamic" [90m-> null[0m[0m
+      [31m-[0m[0m ddos_protection_mode    = "VirtualNetworkInherited" [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3" [90m-> null[0m[0m
+      [31m-[0m[0m idle_timeout_in_minutes = 4 [90m-> null[0m[0m
+      [31m-[0m[0m ip_address              = "52.186.120.18" [90m-> null[0m[0m
+      [31m-[0m[0m ip_tags                 = {} [90m-> null[0m[0m
+      [31m-[0m[0m ip_version              = "IPv4" [90m-> null[0m[0m
+      [31m-[0m[0m location                = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                    = "myPublicIP-assign3" [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name     = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m sku                     = "Basic" [90m-> null[0m[0m
+      [31m-[0m[0m sku_tier                = "Regional" [90m-> null[0m[0m
+      [31m-[0m[0m tags                    = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m zones                   = [] [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_subnet.myterraformsubnet[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_subnet" "myterraformsubnet" {
+      [31m-[0m[0m address_prefixes                               = [
+          [31m-[0m[0m "10.0.1.0/24",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m enforce_private_link_endpoint_network_policies = false [90m-> null[0m[0m
+      [31m-[0m[0m enforce_private_link_service_network_policies  = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m name                                           = "mySubnet-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m private_endpoint_network_policies_enabled      = true [90m-> null[0m[0m
+      [31m-[0m[0m private_link_service_network_policies_enabled  = true [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name                            = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m service_endpoint_policy_ids                    = [] [90m-> null[0m[0m
+      [31m-[0m[0m service_endpoints                              = [] [90m-> null[0m[0m
+      [31m-[0m[0m virtual_network_name                           = "myVnet-assign2" [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_subnet_network_security_group_association.example[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_subnet_network_security_group_association" "example" {
+      [31m-[0m[0m id                        = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m network_security_group_id = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/myNSG-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                 = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" [90m-> null[0m[0m
+    }
+
+[1m  # azurerm_virtual_machine.udacity-vm-lab[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_virtual_machine" "udacity-vm-lab" {
+      [31m-[0m[0m delete_data_disks_on_termination = false [90m-> null[0m[0m
+      [31m-[0m[0m delete_os_disk_on_termination    = false [90m-> null[0m[0m
+      [31m-[0m[0m id                               = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m location                         = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                             = "udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface_ids            = [
+          [31m-[0m[0m "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name              = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m tags                             = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vm_size                          = "Standard_B2ms" [90m-> null[0m[0m
+      [31m-[0m[0m zones                            = [] [90m-> null[0m[0m
+
+      [31m-[0m[0m os_profile {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+
+      [31m-[0m[0m os_profile_linux_config {
+          [31m-[0m[0m disable_password_authentication = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_image_reference {
+          [31m-[0m[0m id = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/myPackerImage" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_os_disk {
+          [31m-[0m[0m caching                   = "ReadWrite" [90m-> null[0m[0m
+          [31m-[0m[0m create_option             = "FromImage" [90m-> null[0m[0m
+          [31m-[0m[0m disk_size_gb              = 30 [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_id           = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_type         = "Standard_LRS" [90m-> null[0m[0m
+          [31m-[0m[0m name                      = "myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m os_type                   = "Linux" [90m-> null[0m[0m
+          [31m-[0m[0m write_accelerator_enabled = false [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_virtual_machine.udacity-vm-lab[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_virtual_machine" "udacity-vm-lab" {
+      [31m-[0m[0m delete_data_disks_on_termination = false [90m-> null[0m[0m
+      [31m-[0m[0m delete_os_disk_on_termination    = false [90m-> null[0m[0m
+      [31m-[0m[0m id                               = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m location                         = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                             = "udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface_ids            = [
+          [31m-[0m[0m "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name              = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m tags                             = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vm_size                          = "Standard_B2ms" [90m-> null[0m[0m
+      [31m-[0m[0m zones                            = [] [90m-> null[0m[0m
+
+      [31m-[0m[0m os_profile {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+
+      [31m-[0m[0m os_profile_linux_config {
+          [31m-[0m[0m disable_password_authentication = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_image_reference {
+          [31m-[0m[0m id = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/myPackerImage" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_os_disk {
+          [31m-[0m[0m caching                   = "ReadWrite" [90m-> null[0m[0m
+          [31m-[0m[0m create_option             = "FromImage" [90m-> null[0m[0m
+          [31m-[0m[0m disk_size_gb              = 30 [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_id           = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_type         = "Standard_LRS" [90m-> null[0m[0m
+          [31m-[0m[0m name                      = "myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m os_type                   = "Linux" [90m-> null[0m[0m
+          [31m-[0m[0m write_accelerator_enabled = false [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_virtual_machine.udacity-vm-lab[2][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_virtual_machine" "udacity-vm-lab" {
+      [31m-[0m[0m delete_data_disks_on_termination = false [90m-> null[0m[0m
+      [31m-[0m[0m delete_os_disk_on_termination    = false [90m-> null[0m[0m
+      [31m-[0m[0m id                               = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m location                         = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                             = "udacity-vm-lab" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface_ids            = [
+          [31m-[0m[0m "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name              = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m tags                             = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vm_size                          = "Standard_B2ms" [90m-> null[0m[0m
+      [31m-[0m[0m zones                            = [] [90m-> null[0m[0m
+
+      [31m-[0m[0m os_profile {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+
+      [31m-[0m[0m os_profile_linux_config {
+          [31m-[0m[0m disable_password_authentication = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_image_reference {
+          [31m-[0m[0m id = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/myPackerImage" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m storage_os_disk {
+          [31m-[0m[0m caching                   = "ReadWrite" [90m-> null[0m[0m
+          [31m-[0m[0m create_option             = "FromImage" [90m-> null[0m[0m
+          [31m-[0m[0m disk_size_gb              = 30 [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_id           = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m managed_disk_type         = "Standard_LRS" [90m-> null[0m[0m
+          [31m-[0m[0m name                      = "myOsDisk-assign" [90m-> null[0m[0m
+          [31m-[0m[0m os_type                   = "Linux" [90m-> null[0m[0m
+          [31m-[0m[0m write_accelerator_enabled = false [90m-> null[0m[0m
+        }
+    }
+
+[1m  # azurerm_virtual_network.myterraformnetwork[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "azurerm_virtual_network" "myterraformnetwork" {
+      [31m-[0m[0m address_space           = [
+          [31m-[0m[0m "10.0.0.0/16",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m dns_servers             = [] [90m-> null[0m[0m
+      [31m-[0m[0m flow_timeout_in_minutes = 0 [90m-> null[0m[0m
+      [31m-[0m[0m guid                    = "b932e515-2cf1-4e7a-8cf0-40685338f05e" [90m-> null[0m[0m
+      [31m-[0m[0m id                      = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m location                = "eastus" [90m-> null[0m[0m
+      [31m-[0m[0m name                    = "myVnet-assign2" [90m-> null[0m[0m
+      [31m-[0m[0m resource_group_name     = "Azuredevops" [90m-> null[0m[0m
+      [31m-[0m[0m subnet                  = [
+          [31m-[0m[0m {
+              [31m-[0m[0m address_prefix = "10.0.1.0/24"
+              [31m-[0m[0m id             = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2"
+              [31m-[0m[0m name           = "mySubnet-assign2"
+              [31m-[0m[0m security_group = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/myNSG-assign2"
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags                    = {
+          [31m-[0m[0m "source" = "NghiaUdacitylab"
+        } [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 0 to change, 13 to destroy.
+[0m
+Changes to Outputs:
+  [31m-[0m[0m name-udacity-vm-lab = [
+      [31m-[0m[0m "udacity-vm-lab",
+      [31m-[0m[0m "udacity-vm-lab",
+      [31m-[0m[0m "udacity-vm-lab",
+    ] [90m-> null[0m[0m
+[0m[1mazurerm_subnet_network_security_group_association.example: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2][0m[0m
+[0m[1mazurerm_lb_backend_address_pool.lbbap: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer/backendAddressPools/BackEndAddressPool][0m[0m
+[0m[1mazurerm_network_interface.myterraformnic3: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign3][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab][0m[0m
+[0m[1mazurerm_subnet_network_security_group_association.example: Destruction complete after 6s[0m
+[0m[1mazurerm_network_security_group.myterraformnsg: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/myNSG-assign2][0m[0m
+[0m[1mazurerm_network_security_group.myterraformnsg: Destruction complete after 2s[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 10s elapsed][0m[0m
+[0m[1mazurerm_network_interface.myterraformnic3: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...etwork/networkInterfaces/myNIC-assign3, 10s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 10s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 10s elapsed][0m[0m
+[0m[1mazurerm_lb_backend_address_pool.lbbap: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...backendAddressPools/BackEndAddressPool, 10s elapsed][0m[0m
+[0m[1mazurerm_lb_backend_address_pool.lbbap: Destruction complete after 13s[0m
+[0m[1mazurerm_lb.lb: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/loadBalancer][0m[0m
+[0m[1mazurerm_network_interface.myterraformnic3: Destruction complete after 17s[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 20s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 20s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 20s elapsed][0m[0m
+[0m[1mazurerm_lb.lb: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...oft.Network/loadBalancers/loadBalancer, 10s elapsed][0m[0m
+[0m[1mazurerm_lb.lb: Destruction complete after 12s[0m
+[0m[1mazurerm_public_ip.myterraformpublicip: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign2][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 30s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 30s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 30s elapsed][0m[0m
+[0m[1mazurerm_public_ip.myterraformpublicip: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...k/publicIPAddresses/myPublicIP-assign2, 10s elapsed][0m[0m
+[0m[1mazurerm_public_ip.myterraformpublicip: Destruction complete after 11s[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 40s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[1]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 40s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[0]: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Compute/virtualMachines/udacity-vm-lab, 40s elapsed][0m[0m
+[0m[1mazurerm_virtual_machine.udacity-vm-lab[2]: Destruction complete after 42s[0m
+
+
+data.azurerm_image.custom: Reading...
+azurerm_virtual_network.myterraformnetwork: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2]
+azurerm_public_ip.myterraformpublicip3: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3]
+data.azurerm_image.custom: Read complete after 1s [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/myPackerImage]
+azurerm_subnet.myterraformsubnet: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2]
+azurerm_network_interface.myterraformnic: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2]
+azurerm_virtual_machine.udacity-vm-lab[0]: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab]
+azurerm_virtual_machine.udacity-vm-lab[1]: Refreshing state... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/udacity-vm-lab]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_network_interface.myterraformnic will be destroyed
+  - resource "azurerm_network_interface" "myterraformnic" {
+      - applied_dns_servers           = [] -> null
+      - dns_servers                   = [] -> null
+      - enable_accelerated_networking = false -> null
+      - enable_ip_forwarding          = false -> null
+      - id                            = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2" -> null
+      - location                      = "eastus" -> null
+      - mac_address                   = "7C-1E-52-09-F8-A9" -> null
+      - name                          = "myNIC-assign2" -> null
+      - private_ip_address            = "10.0.1.4" -> null
+      - private_ip_addresses          = [
+          - "10.0.1.4",
+        ] -> null
+      - resource_group_name           = "Azuredevops" -> null
+      - tags                          = {
+          - "source" = "NghiaUdacitylab"
+        } -> null
+
+      - ip_configuration {
+          - name                          = "myNicConfiguration-assign2" -> null
+          - primary                       = true -> null
+          - private_ip_address            = "10.0.1.4" -> null
+          - private_ip_address_allocation = "Dynamic" -> null
+          - private_ip_address_version    = "IPv4" -> null
+          - public_ip_address_id          = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3" -> null   
+          - subnet_id                     = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" -> null
+        }
+    }
+
+  # azurerm_public_ip.myterraformpublicip3 will be destroyed
+  - resource "azurerm_public_ip" "myterraformpublicip3" {
+      - allocation_method       = "Dynamic" -> null
+      - ddos_protection_mode    = "VirtualNetworkInherited" -> null
+      - id                      = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3" -> null
+      - idle_timeout_in_minutes = 4 -> null
+      - ip_tags                 = {} -> null
+      - ip_version              = "IPv4" -> null
+      - location                = "eastus" -> null
+      - name                    = "myPublicIP-assign3" -> null
+      - resource_group_name     = "Azuredevops" -> null
+      - sku                     = "Basic" -> null
+      - sku_tier                = "Regional" -> null
+      - tags                    = {
+          - "source" = "NghiaUdacitylab"
+        } -> null
+      - zones                   = [] -> null
+    }
+
+  # azurerm_subnet.myterraformsubnet will be destroyed
+  - resource "azurerm_subnet" "myterraformsubnet" {
+      - address_prefixes                               = [
+          - "10.0.1.0/24",
+        ] -> null
+      - enforce_private_link_endpoint_network_policies = false -> null
+      - enforce_private_link_service_network_policies  = false -> null
+      - id                                             = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2" -> null
+      - name                                           = "mySubnet-assign2" -> null
+      - private_endpoint_network_policies_enabled      = true -> null
+      - private_link_service_network_policies_enabled  = true -> null
+      - resource_group_name                            = "Azuredevops" -> null
+      - service_endpoint_policy_ids                    = [] -> null
+      - service_endpoints                              = [] -> null
+      - virtual_network_name                           = "myVnet-assign2" -> null
+    }
+
+  # azurerm_virtual_network.myterraformnetwork will be destroyed
+  - resource "azurerm_virtual_network" "myterraformnetwork" {
+      - address_space           = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers             = [] -> null
+      - flow_timeout_in_minutes = 0 -> null
+      - guid                    = "b932e515-2cf1-4e7a-8cf0-40685338f05e" -> null
+      - id                      = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2" -> null
+      - location                = "eastus" -> null
+      - name                    = "myVnet-assign2" -> null
+      - resource_group_name     = "Azuredevops" -> null
+      - subnet                  = [
+          - {
+              - address_prefix = "10.0.1.0/24"
+              - id             = "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2"   
+              - name           = "mySubnet-assign2"
+              - security_group = ""
+            },
+        ] -> null
+      - tags                    = {
+          - "source" = "NghiaUdacitylab"
+        } -> null
+    }
+
+Plan: 0 to add, 0 to change, 4 to destroy.
+
+Changes to Outputs:
+  - name-udacity-vm-lab = [
+      - "udacity-vm-lab",
+      - "udacity-vm-lab",
+      - "udacity-vm-lab",
+    ] -> null
+azurerm_network_interface.myterraformnic: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/myNIC-assign2]
+azurerm_network_interface.myterraformnic: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...etwork/networkInterfaces/myNIC-assign2, 10s elapsed]
+azurerm_network_interface.myterraformnic: Destruction complete after 13s
+azurerm_subnet.myterraformsubnet: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2/subnets/mySubnet-assign2]
+azurerm_public_ip.myterraformpublicip3: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/myPublicIP-assign3]
+azurerm_subnet.myterraformsubnet: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...yVnet-assign2/subnets/mySubnet-assign2, 10s elapsed]
+azurerm_public_ip.myterraformpublicip3: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...k/publicIPAddresses/myPublicIP-assign3, 10s elapsed]
+azurerm_public_ip.myterraformpublicip3: Destruction complete after 11s
+azurerm_subnet.myterraformsubnet: Destruction complete after 12s
+azurerm_virtual_network.myterraformnetwork: Destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/myVnet-assign2]
+azurerm_virtual_network.myterraformnetwork: Still destroying... [id=/subscriptions/e2c7cd99-c3c5-4a90-9109-...Network/virtualNetworks/myVnet-assign2, 10s elapsed]
+azurerm_virtual_network.myterraformnetwork: Destruction complete after 11s
+
+Destroy complete! Resources: 4 destroyed.
