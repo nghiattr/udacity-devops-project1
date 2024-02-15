@@ -12,7 +12,7 @@ How to run:
 - Azure policy:
     + az account set --subscription <your_subcription_id>
     + az policy definition create --name "RequireTags" --display-name "Require Tags on Resources" --description "This policy ensures that all resources are created with tags." --rules tagspolicy.json
-    + az policy assignment create --name "RequireTagsAssignment" --display-name "Require Tags on Resources Assignment" --scope "/subscriptions/<subscription_id_or_name>" --policy "RequireTags
+    + az policy assignment create --name "RequireTagsAssignment" --display-name "Require Tags on Resources Assignment" --scope "/subscriptions/<subscription_id_or_name>" --policy "RequireTags"
     + az policy assignment list
 - Packer (server.json): 
     + packer plugins install github.com/hashicorp/azure
@@ -23,5 +23,11 @@ How to run:
     + terraform plan
     + terraform apply
     + terraform destroy
+
+Customization:
+To customize the Terraform deployment, follow these steps:
+1. Open the `vars.tf` file.
+2. Modify the values of variables according to your requirements.
+3. Save the changes.
 
 All variables used in Terraform are defined in the variables.tf file. Each variable has a description.

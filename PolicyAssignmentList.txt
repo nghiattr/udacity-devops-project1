@@ -1,0 +1,60 @@
+[
+  {
+    "description": null,
+    "displayName": "Require Tags on Resources Assignment",
+    "enforcementMode": "Default",
+    "id": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/providers/Microsoft.Authorization/policyAssignments/RequireTagsAssignment",
+    "identity": null,
+    "location": null,
+    "metadata": {
+      "createdBy": "4cd1c755-cd01-4fcd-8e64-8743ad7a1a8a",
+      "createdOn": "2024-02-15T10:24:20.2211416Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "name": "RequireTagsAssignment",
+    "nonComplianceMessages": null,
+    "notScopes": null,
+    "parameters": null,
+    "policyDefinitionId": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/providers/Microsoft.Authorization/policyDefinitions/RequireTags",
+    "scope": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311",
+    "systemData": {
+      "createdAt": "2024-02-15T10:24:20.124396+00:00",
+      "createdBy": "odl_user_253165@udacityhol.onmicrosoft.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2024-02-15T10:24:20.124396+00:00",
+      "lastModifiedBy": "odl_user_253165@udacityhol.onmicrosoft.com",
+      "lastModifiedByType": "User"
+    },
+    "type": "Microsoft.Authorization/policyAssignments"
+  },
+  {
+    "description": "clouddevops674-253165-PolicyDefinition",
+    "displayName": "clouddevops674-253165-PolicyDefinition",
+    "enforcementMode": "Default",
+    "id": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/providers/Microsoft.Authorization/policyAssignments/clouddevops674-253165-PolicyDefinition",
+    "identity": null,
+    "location": null,
+    "metadata": {
+      "createdBy": "f797eca9-5d09-44b6-b23f-98732363911c",
+      "createdOn": "2024-02-15T09:47:47.0903932Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "name": "clouddevops674-253165-PolicyDefinition",
+    "nonComplianceMessages": null,
+    "notScopes": null,
+    "parameters": null,
+    "policyDefinitionId": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311/providers/Microsoft.Authorization/policyDefinitions/clouddevops674-253165-PolicyDefinition",
+    "scope": "/subscriptions/e2c7cd99-c3c5-4a90-9109-02e7d50f8311",
+    "systemData": {
+      "createdAt": "2024-02-15T09:47:47.055927+00:00",
+      "createdBy": "0609ced8-c8f7-49fd-91c2-c484ddad694d",
+      "createdByType": "Application",
+      "lastModifiedAt": "2024-02-15T09:47:47.055927+00:00",
+      "lastModifiedBy": "0609ced8-c8f7-49fd-91c2-c484ddad694d",
+      "lastModifiedByType": "Application"
+    },
+    "type": "Microsoft.Authorization/policyAssignments"
+  }
+]

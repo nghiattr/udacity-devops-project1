@@ -11,7 +11,7 @@ variable "resource_group_location" {
 variable "instance_count" {
   description = "The number of virtual machines to deploy"
   type        = number
-  default     = 2
+  default     = 3
 }
 
 variable "custom_tags" {
