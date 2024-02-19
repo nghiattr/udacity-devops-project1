@@ -40,7 +40,8 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 }
 
 resource "azurerm_public_ip" "myterraformpublicip3" {
-  name                = "myPublicIP-assign3"
+  count               = var.instance_count
+  name                = "myPublicIP-assign-${count.index}"
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
   allocation_method   = "Dynamic"
@@ -58,6 +59,7 @@ resource "azurerm_lb" "lb" {
 
   frontend_ip_configuration {
     name                 = "publicIPAddress"
+    private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.myterraformpublicip.id
   }
 
@@ -146,15 +148,16 @@ resource "azurerm_network_security_rule" "inbound_http_lb_vms" {
 
 # NIC for VM 
 resource "azurerm_network_interface" "myterraformnic" {
-  name                = "myNIC-assign2"
+  count               = var.instance_count
+  name                = "myNIC-assign-${count.index}"
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
 
   ip_configuration {
-    name                          = "myNicConfiguration-assign2"
+    name                          = "myNicConfiguration-assign-${count.index}"
     subnet_id                     = azurerm_subnet.myterraformsubnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.myterraformpublicip3.id
+    public_ip_address_id          = azurerm_public_ip.myterraformpublicip3[count.index].id
   }
     
   tags = {
@@ -187,11 +190,11 @@ data "azurerm_image" "custom" {
 
 # Create virtual machine Linux for udacity-vm-lab
 resource "azurerm_virtual_machine" "udacity-vm-lab" {
-  name                  = "udacity-vm-lab"
   count                 = var.instance_count
+  name                  = "udacity-vm-lab-${count.index}"
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.myterraformnic.id]
+  network_interface_ids = [azurerm_network_interface.myterraformnic[count.index].id]
   vm_size               = "Standard_B2ms"
 
   storage_image_reference {
@@ -208,7 +211,7 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   }
 
   storage_os_disk {
-    name                 = "myOsDisk-assign"
+    name                 = "myOsDisk-assign-${count.index}"
     caching              = "ReadWrite"
     create_option        = "FromImage"
     managed_disk_type    = "Standard_LRS"
@@ -217,6 +220,13 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
   tags = {
     source = var.custom_tags
   }
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "vm_lb_association" {
+  count                    = var.instance_count
+  ip_configuration_name    = "myNicConfiguration-assign-${count.index}"
+  network_interface_id     = azurerm_network_interface.myterraformnic[count.index].id
+  backend_address_pool_id  = azurerm_lb_backend_address_pool.lbbap.id
 }
 
 # Try to add the VM without Tags for Tags Policy testing.
