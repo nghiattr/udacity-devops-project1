@@ -81,7 +81,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
   #Rule to deny inbound traffic from the internet
   security_rule {
     name                       = "DenyInternetInbound"
-    priority                   = 110
+    priority                   = 4000
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "*"
@@ -94,6 +94,54 @@ resource "azurerm_network_security_group" "myterraformnsg" {
   tags = {
     source = var.custom_tags
   }
+}
+
+resource "azurerm_subnet_network_security_group_association" "udacity" {
+  subnet_id                 = azurerm_subnet.myterraformsubnet.id
+  network_security_group_id = azurerm_network_security_group.myterraformnsg.id
+}
+
+# Create NS rule
+resource "azurerm_network_security_rule" "inbound_same_vnet" {
+  name                        = "AllowVnetInBound"
+  priority                    = 700
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "*"
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "VirtualNetwork"
+  destination_address_prefix  = "VirtualNetwork"
+  resource_group_name         = var.resource_group_name
+  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
+}
+
+resource "azurerm_network_security_rule" "outbound_same_vnet" {
+  name                        = "AllowVnetOutBound"
+  priority                    = 701
+  direction                   = "Outbound"
+  access                      = "Allow"
+  protocol                    = "*"
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "VirtualNetwork"
+  destination_address_prefix  = "VirtualNetwork"
+  resource_group_name         = var.resource_group_name
+  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
+}
+
+resource "azurerm_network_security_rule" "inbound_http_lb_vms" {
+  name                        = "AllowAzureLoadBalancerInBound"
+  priority                    = 702
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "*"
+  source_port_range           = "80"
+  destination_port_range      = "*"
+  source_address_prefix       = "AzureLoadBalancer"
+  destination_address_prefix  = "*"
+  resource_group_name         = var.resource_group_name
+  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
 }
 
 # NIC for VM 
@@ -131,11 +179,6 @@ resource "azurerm_network_interface" "myterraformnic3" {
   }
 }
 
-# Connect the subnet to the network security group
-resource "azurerm_subnet_network_security_group_association" "example" {
-  subnet_id                 = azurerm_subnet.myterraformsubnet.id
-  network_security_group_id = azurerm_network_security_group.myterraformnsg.id
-}
 
 data "azurerm_image" "custom" {
   name                = var.custom_image_name
@@ -177,30 +220,30 @@ resource "azurerm_virtual_machine" "udacity-vm-lab" {
 }
 
 # Try to add the VM without Tags for Tags Policy testing.
-resource "azurerm_virtual_machine" "udacity-vm-lab2" {
-  name                  = "udacity-vm-lab2"
-  location              = var.resource_group_location
-  resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.myterraformnic3.id]
-  vm_size               = "Standard_B2ms"
+# resource "azurerm_virtual_machine" "udacity-vm-lab2" {
+#   name                  = "udacity-vm-lab2"
+#   location              = var.resource_group_location
+#   resource_group_name   = var.resource_group_name
+#   network_interface_ids = [azurerm_network_interface.myterraformnic3.id]
+#   vm_size               = "Standard_B2ms"
 
-  storage_image_reference {
-    id = data.azurerm_image.custom.id
-  }
+#   storage_image_reference {
+#     id = data.azurerm_image.custom.id
+#   }
 
-  os_profile {
-    computer_name  = "udacity-vm-lab2"
-    admin_username = var.admin_username
-    admin_password = var.admin_password
-  }
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
+#   os_profile {
+#     computer_name  = "udacity-vm-lab2"
+#     admin_username = var.admin_username
+#     admin_password = var.admin_password
+#   }
+#   os_profile_linux_config {
+#     disable_password_authentication = false
+#   }
 
-  storage_os_disk {
-    name                 = "myOsDisk-assign2"
-    caching              = "ReadWrite"
-    create_option        = "FromImage"
-    managed_disk_type    = "Standard_LRS"
-  }
-}
+#   storage_os_disk {
+#     name                 = "myOsDisk-assign2"
+#     caching              = "ReadWrite"
+#     create_option        = "FromImage"
+#     managed_disk_type    = "Standard_LRS"
+#   }
+# }
