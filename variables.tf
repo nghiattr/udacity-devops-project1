@@ -20,7 +20,7 @@ variable "custom_tags" {
 }
 
 variable "custom_image_name" {
-  default     = "myPackerImage"
+  default     = "myPackerImage2"
   description = "Custom image name"
 }
 

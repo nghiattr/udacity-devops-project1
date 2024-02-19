@@ -7,15 +7,15 @@
     "builders": [
         {
             "type": "azure-arm",
-            "client_id": "ada7889e-2fef-4a46-bb80-cc861388819c",
-            "client_secret": "GJy8Q~9.y2YheAi5IZ1q4usQd6JiC-gl748FGarj",
-            "subscription_id": "e2c7cd99-c3c5-4a90-9109-02e7d50f8311",
+            "client_id": "9d43ad65-346e-40dc-b215-04071fafcc6f",
+            "client_secret": "D2d8Q~bUAT-zwGjQA.9kZuwV6XbA_F-6z4ZL.a6-",
+            "subscription_id": "83316a40-5757-40fd-8e78-645eefac51b6",
             "os_type": "Linux",
             "image_publisher": "Canonical",
             "image_offer": "UbuntuServer",
             "image_sku": "18.04-LTS",
             "managed_image_resource_group_name": "Azuredevops",
-            "managed_image_name": "myPackerImage",
+            "managed_image_name": "myPackerImage2",
             "location": "East US",
             "vm_size": "Standard_B1s",
             "azure_tags": {
@@ -27,8 +27,19 @@
     "provisioners": [
         {
             "inline": [
-                "echo 'Hello, World!' > index.html",
-                "nohup busybox httpd -f -p 80 &"
+                "export TZ=Europe/Berlin",
+                "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone",
+                "apt-get update",
+                "apt-get install -y busybox supervisor",
+                "mkdir -p /usr/www",
+                "chown www-data:www-data /usr/www",
+                "echo 'Hello, World!' > /usr/www/index.html",
+                "echo '[supervisord]' > /etc/supervisor/supervisord.conf",
+                "echo 'nodaemon=true' >> /etc/supervisor/supervisord.conf",
+                "echo '[program:httpd]' >> /etc/supervisor/supervisord.conf",
+                "echo 'command=/bin/busybox httpd -f -p 80 -h /usr/www' >> /etc/supervisor/supervisord.conf",
+                "echo 'autostart=true' >> /etc/supervisor/supervisord.conf",
+                "echo 'autorestart=true' >> /etc/supervisor/supervisord.conf"
             ],
             "inline_shebang": "/bin/sh -x",
             "type": "shell",
