@@ -50,44 +50,55 @@ resource "azurerm_public_ip" "myterraformpublicip3" {
   }
 }
 
-# Create a Load Balancer
-resource "azurerm_lb" "lb" {
-  name                = "loadBalancer"
-  location            = var.resource_group_location
-  resource_group_name = var.resource_group_name
+# # Create a Load Balancer
+# resource "azurerm_lb" "lb" {
+#   name                = "loadBalancer"
+#   location            = var.resource_group_location
+#   resource_group_name = var.resource_group_name
 
-  frontend_ip_configuration {
-    name                 = "publicIPAddress"
-    public_ip_address_id = azurerm_public_ip.myterraformpublicip.id
-  }
+#   frontend_ip_configuration {
+#     name                 = "publicIPAddress"
+#     public_ip_address_id = azurerm_public_ip.myterraformpublicip.id
+#   }
 
-  tags = {
-    source = var.custom_tags
-  }
-}
+#   tags = {
+#     source = var.custom_tags
+#   }
+# }
 
-# Create a LoadBalancer Backend Address Pool
-resource "azurerm_lb_backend_address_pool" "lbbap" {
-  loadbalancer_id = azurerm_lb.lb.id
-  name            = "BackEndAddressPool"
-}
+# # Create a LoadBalancer Backend Address Pool
+# resource "azurerm_lb_backend_address_pool" "lbbap" {
+#   loadbalancer_id = azurerm_lb.lb.id
+#   name            = "BackEndAddressPool"
+# }
 
 # Create Network Security Group and rules
 resource "azurerm_network_security_group" "myterraformnsg" {
-  name                = "myNSG-assign2"
+  name                = "myNSG-assign3"
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
 
   #Rule to deny inbound traffic from the internet
   security_rule {
-    name                       = "DenyInternetInbound"
-    priority                   = 4000
+    name                       = "DenyInter33netInbound"
+    priority                   = 100
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
-    source_address_prefix      = "Internet"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  security_rule {
+    name                       = "DenyInternetInbound"
+    priority                   = 110
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
 
@@ -102,47 +113,47 @@ resource "azurerm_subnet_network_security_group_association" "udacity" {
 }
 
 # Create NS rule
-resource "azurerm_network_security_rule" "inbound_same_vnet" {
-  name                        = "AllowVnetInBound"
-  priority                    = 700
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "*"
-  source_port_range           = "*"
-  destination_port_range      = "*"
-  source_address_prefix       = "VirtualNetwork"
-  destination_address_prefix  = "VirtualNetwork"
-  resource_group_name         = var.resource_group_name
-  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
-}
+# resource "azurerm_network_security_rule" "inbound_same_vnet" {
+#   name                        = "AllowVnetInBound"
+#   priority                    = 700
+#   direction                   = "Inbound"
+#   access                      = "Allow"
+#   protocol                    = "*"
+#   source_port_range           = "*"
+#   destination_port_range      = "*"
+#   source_address_prefix       = "VirtualNetwork"
+#   destination_address_prefix  = "VirtualNetwork"
+#   resource_group_name         = var.resource_group_name
+#   network_security_group_name = azurerm_network_security_group.myterraformnsg.name
+# }
 
-resource "azurerm_network_security_rule" "outbound_same_vnet" {
-  name                        = "AllowVnetOutBound"
-  priority                    = 701
-  direction                   = "Outbound"
-  access                      = "Allow"
-  protocol                    = "*"
-  source_port_range           = "*"
-  destination_port_range      = "*"
-  source_address_prefix       = "VirtualNetwork"
-  destination_address_prefix  = "VirtualNetwork"
-  resource_group_name         = var.resource_group_name
-  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
-}
+# resource "azurerm_network_security_rule" "outbound_same_vnet" {
+#   name                        = "AllowVnetOutBound"
+#   priority                    = 701
+#   direction                   = "Outbound"
+#   access                      = "Allow"
+#   protocol                    = "*"
+#   source_port_range           = "*"
+#   destination_port_range      = "*"
+#   source_address_prefix       = "VirtualNetwork"
+#   destination_address_prefix  = "VirtualNetwork"
+#   resource_group_name         = var.resource_group_name
+#   network_security_group_name = azurerm_network_security_group.myterraformnsg.name
+# }
 
-resource "azurerm_network_security_rule" "inbound_http_lb_vms" {
-  name                        = "AllowAzureLoadBalancerInBound"
-  priority                    = 702
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "*"
-  source_port_range           = "80"
-  destination_port_range      = "*"
-  source_address_prefix       = "AzureLoadBalancer"
-  destination_address_prefix  = "*"
-  resource_group_name         = var.resource_group_name
-  network_security_group_name = azurerm_network_security_group.myterraformnsg.name
-}
+# resource "azurerm_network_security_rule" "inbound_http_lb_vms" {
+#   name                        = "AllowAzureLoadBalancerInBound"
+#   priority                    = 702
+#   direction                   = "Inbound"
+#   access                      = "Allow"
+#   protocol                    = "*"
+#   source_port_range           = "80"
+#   destination_port_range      = "*"
+#   source_address_prefix       = "AzureLoadBalancer"
+#   destination_address_prefix  = "*"
+#   resource_group_name         = var.resource_group_name
+#   network_security_group_name = azurerm_network_security_group.myterraformnsg.name
+# }
 
 # NIC for VM 
 resource "azurerm_network_interface" "myterraformnic" {
@@ -180,39 +191,37 @@ resource "azurerm_network_interface" "myterraformnic3" {
 }
 
 
-data "azurerm_image" "custom" {
-  name                = var.custom_image_name
-  resource_group_name = var.resource_group_name
-}
+# data "azurerm_image" "custom" {
+#   name                = var.custom_image_name
+#   resource_group_name = var.resource_group_name
+# }
 
 # Create virtual machine Linux for udacity-vm-lab
-resource "azurerm_virtual_machine" "udacity-vm-lab" {
+resource "azurerm_linux_virtual_machine" "udacity-vm-lab" {
   name                  = "udacity-vm-lab"
-  count                 = var.instance_count
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
-  vm_size               = "Standard_B2ms"
+  size                  = "Standard_B2ms"
 
-  storage_image_reference {
-    id = data.azurerm_image.custom.id
-  }
 
-  os_profile {
-    computer_name  = "udacity-vm-lab"
-    admin_username = var.admin_username
-    admin_password = var.admin_password
-  }
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
-
-  storage_os_disk {
-    name                 = "myOsDisk-assign"
+  os_disk {
+    name                 = "myOsDisk-assign23"
     caching              = "ReadWrite"
-    create_option        = "FromImage"
-    managed_disk_type    = "Standard_LRS"
+    storage_account_type = "Standard_LRS"
   }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts-gen2"
+    version   = "latest"
+  }
+
+  computer_name                   = "centos-vm"
+  admin_username                  = var.admin_username
+  admin_password                  = var.admin_password
+  disable_password_authentication = false
 
   tags = {
     source = var.custom_tags
